@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
   has_many :follower_connections
   has_many :followers, through: :follower_connections
+
+  has_many :following_connections, :class_name => "FollowerConnection", :foreign_key => "follower_id"
+  has_many :following, :through => :following_connections, :source => :user
+  attr_accessible :follower_id, :user_id
+
   has_many :tweets
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -13,7 +19,8 @@ class User < ActiveRecord::Base
   before_create :set_gravatar_url
 
   def following_tweets
-    join(:following => :tweets).select(:tweets)
+    following_ids = following.map(&:id)
+    Tweet.where(user_id: following_ids).order("created_at DESC")
   end
 
   def publish_tweet(params)

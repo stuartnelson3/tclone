@@ -2,8 +2,8 @@ class TweetsController < ApplicationController
   before_filter :authenticate_user!, :except => :index
 
   def index
-    user = User.find_by_user_name(params[:username]) || not_found
-    @tweets = user.tweets
+    @user = User.find_by_user_name(params[:username]) || not_found
+    @tweets = @user.tweets
   end
 
   def new

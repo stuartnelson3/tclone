@@ -1,9 +1,10 @@
-class FollowerConnectionsControllerController < ApplicationController
+class FollowerConnectionsController < ApplicationController
   before_filter :authenticate_user!
   def create
-    @following = current_user.followers.build(follower_id: params[:follower_id])
-    if @following.save
-      flash[:success] = "Followed #{params[:username]}!"
+    user_to_follow = User.find_by_id(params[:user_id])
+    current_user.following << user_to_follow
+    if current_user.save
+      flash[:success] = "Followed #{user_to_follow.user_name}!"
     else
       flash[:error] = "Error occurred! Follow again later."
     end

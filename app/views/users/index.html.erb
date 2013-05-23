@@ -6,8 +6,18 @@
 
 <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
 
+<% if @following_tweets.present? %>
+  <% @following_tweets.each do |tweet| %>
+    <p><%= time_ago_in_words(tweet.created_at) %></p>
+    <p><%= tweet.text %></p>
+  <% end %>
+<% else %>
+  <p>try following one of these people!</p>
+<% end %>
+
 <p>here are the other users on the site:</p>
 <% @users.each do |user| %>
   <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>
   <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
 <% end %>
+

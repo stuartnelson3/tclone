@@ -1,6 +1,7 @@
 Tclone::Application.routes.draw do
   root to: "users#index"
   resources :tweets
+  resources :follower_connections
   get "users/index"
   get "users/show"
   # get "users/update"

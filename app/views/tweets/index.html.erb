@@ -1,5 +1,8 @@
 <% if @tweets.present? %>
-<h1><%= current_user.user_name %>'s tweets</h1>
+<h1><%= @user.user_name %>'s tweets</h1>
+<% if @user != current_user %>
+  <%= link_to "Follow", follower_connections_path(:user_id => @user), :method => :post %>
+<% end %>
 
 <% @tweets.each do |tweet| %>
   <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>
