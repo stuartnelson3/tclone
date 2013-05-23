@@ -5,3 +5,9 @@
 <p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path %></p>
 
 <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
+
+<p>here are the other users on the site:</p>
+<% @users.each do |user| %>
+  <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>
+  <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
+<% end %>

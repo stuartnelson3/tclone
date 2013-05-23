@@ -1,5 +1,5 @@
 <% if @tweets.present? %>
-<h1>Your tweets</h1>
+<h1><%= current_user.user_name %>'s tweets</h1>
 
 <% @tweets.each do |tweet| %>
   <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>

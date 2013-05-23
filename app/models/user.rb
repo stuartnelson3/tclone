@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :follower_connections
+  has_many :followers, through: :follower_connections
   has_many :tweets
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -19,6 +21,7 @@ class User < ActiveRecord::Base
     save
   end
 
+  private
   def set_gravatar_url
     self.gravatar_url = GravatarUrlGenerator.create_url(email)
   end
