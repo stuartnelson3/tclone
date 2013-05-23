@@ -1,0 +1,8 @@
+<h2>Write a tweet</h2>
+<%= form_for @tweet do |f| %>
+
+  <div><%= f.label :text %><br />
+    <%= f.text_area :text %>
+
+  <div><%= f.submit "Tweet!" %></div>
+<% end %>

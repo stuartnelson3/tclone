@@ -1,0 +1,10 @@
+<% if @tweets.present? %>
+<h1>Your tweets</h1>
+
+<% @tweets.each do |tweet| %>
+  <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>
+  <p><%= tweet.text %></p>
+<% end %>
+<% else %>
+  <p>You don't have any tweets!</p>
+<% end %>
