@@ -1,14 +1,10 @@
 Tclone::Application.routes.draw do
   root to: "users#index"
   resources :tweets
-  resources :follower_connections
+  post "follower_connections/create"
+  delete "follower_connections/destroy"
   get "users/index"
   get "users/show"
-  # get "users/update"
-  # get "users/create"
-  # get "users/destroy"
-  # get "users/edit"
-  # get "users/new"
   devise_for :users, path: "/"
   get "/:username", to: "tweets#index", as: :user_tweets
   # The priority is based upon order of creation: first created -> highest priority.

@@ -23,9 +23,43 @@ class User < ActiveRecord::Base
     Tweet.where(user_id: following_ids).order("created_at DESC")
   end
 
+  def following?(user)
+    following.include?(user)
+  end
+
+  def follow(user_id)
+    user_to_follow = User.find_by_id(user_id)
+    following << user_to_follow
+  end
+
+  def unfollow(user_id)
+    following_connections.where(follower_id: id, user_id: user_id).first.destroy
+  end
+
   def publish_tweet(params)
     tweets.new(params)
     save
+  end
+
+  # Public: Find the amount of followers a user has, or the amount of users he
+  # is following
+  #
+  # Examples
+  #
+  #   user.followers_count
+  #   # => 4
+  #
+  #   user.following_count
+  #   # => 2
+  #
+  #   user.tweets_count
+  #   # => 3
+  #
+  # Returns an integer
+  [:tweets, :followers, :following].each do |meth|
+    define_method "#{meth}_count" do
+      send(meth).count
+    end
   end
 
   private

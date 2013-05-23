@@ -1,10 +1,9 @@
 class FollowerConnectionsController < ApplicationController
   before_filter :authenticate_user!
   def create
-    user_to_follow = User.find_by_id(params[:user_id])
-    current_user.following << user_to_follow
+    current_user.follow(params[:user_id])
     if current_user.save
-      flash[:success] = "Followed #{user_to_follow.user_name}!"
+      flash[:success] = "Success"
     else
       flash[:error] = "Error occurred! Follow again later."
     end
@@ -12,8 +11,8 @@ class FollowerConnectionsController < ApplicationController
   end
 
   def destroy
-    current_user.unfollow_user(params[:user])
-    flash[:success] = "No longer following #{params[:username]}!"
+    current_user.unfollow(params[:user_id])
+    flash[:success] = "Successfully unfollowed"
     redirect_to root_path
   end
 end

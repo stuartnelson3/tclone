@@ -1,13 +1,17 @@
 <h1>Home page</h1>
-<p>this will show the tweets of the people you're following</p>
-<p>if you're not logged in, it'll have a log in/ sign up screen</p>
 
 <p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path %></p>
 
 <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
+<div>
+  <p>Tweets: <%= current_user.tweets_count %></p>
+  <p>Followers: <%= current_user.followers_count %></p>
+  <p>Following: <%= current_user.following_count %></p>
+</div>
 
 <% if @following_tweets.present? %>
   <% @following_tweets.each do |tweet| %>
+    <p><%= tweet.owner_name %></p>
     <p><%= time_ago_in_words(tweet.created_at) %></p>
     <p><%= tweet.text %></p>
   <% end %>
