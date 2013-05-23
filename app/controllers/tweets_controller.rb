@@ -24,6 +24,11 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-
+    current_user.tweets.find(params[:id]).destroy
+    flash[:success] = "Tweet deleted"
+  rescue
+    flash[:failure] = "Delete failed"
+  ensure
+    redirect_to user_tweets_path(current_user.user_name)
   end
 end

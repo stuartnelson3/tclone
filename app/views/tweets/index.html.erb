@@ -8,10 +8,13 @@
   <% end %>
 <% end %>
 
-<% @tweets.each do |tweet| %>
-  <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>
-  <p><%= tweet.text %></p>
-<% end %>
+  <% @tweets.each do |tweet| %>
+    <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>
+    <p><%= tweet.text %></p>
+    <% if @user == current_user %>
+      <p><%= link_to "delete tweet", tweet, :method => :delete %></p>
+    <% end %>
+  <% end %>
 <% else %>
   <p>No tweets!</p>
 <% end %>
