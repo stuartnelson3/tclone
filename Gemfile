@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc1'
 gem 'devise'
-gem 'rspec'
+gem 'rspec-rails'
 gem 'puma'
 gem 'protected_attributes'
 gem 'jquery-rails'
