@@ -1,0 +1,8 @@
+<div class="row tweet">
+  <div class="user_name span6">
+    <%= image_tag(tweet.owner_image, alt: tweet.owner_name, class: "pull-left tweet-gravatar") %>
+    <span class="pull-right"><%= time_ago_in_words(tweet.created_at) %></span>
+    <%= tweet.owner_name %>
+    <div><%= tweet.text %></div>
+  </div>
+</div>

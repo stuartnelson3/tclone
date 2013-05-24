@@ -7,4 +7,7 @@ class Tweet < ActiveRecord::Base
   def owner_name
     user.user_name
   end
+  def owner_image
+    user.gravatar_url
+  end
 end

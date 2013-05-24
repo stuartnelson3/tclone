@@ -10,8 +10,7 @@
 <h1><%= @user.user_name %>'s tweets</h1>
 
   <% @tweets.each do |tweet| %>
-    <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>
-    <p><%= tweet.text %></p>
+    <%= render "tweets/tweet", tweet: tweet %>
     <% if @user == current_user %>
       <p><%= link_to "delete tweet", tweet, :method => :delete, class: "btn btn-danger" %></p>
     <% end %>

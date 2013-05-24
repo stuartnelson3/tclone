@@ -22,9 +22,7 @@
 
     <% if @following_tweets.present? %>
       <% @following_tweets.each do |tweet| %>
-        <p><%= tweet.owner_name %></p>
-        <p><%= time_ago_in_words(tweet.created_at) %></p>
-        <p><%= tweet.text %></p>
+        <%= render "tweets/tweet", tweet: tweet %>
       <% end %>
     <% else %>
       <p>try following one of these people!</p>

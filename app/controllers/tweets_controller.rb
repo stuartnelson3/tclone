@@ -14,11 +14,10 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if current_user.publish_tweet(params[:tweet])
         flash[:tweet_success] = "Tweet successfully posted"
-        format.js
       else
         flash[:tweet_failure] = "Tweet failed to post"
-        format.js
       end
+      format.js
     end
   end
 
