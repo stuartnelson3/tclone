@@ -1,6 +1,6 @@
 <div class="row tweet">
   <div class="user_name span8">
-    <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
+    <%= link_to (image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar")), user_tweets_path(user.user_name) %>
     <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>
     <% if current_user.following?(user) %>
       <%= link_to "Unfollow", follower_connections_destroy_path(:user_id => user), :method => :delete, class: "btn btn-danger pull-right" %>
