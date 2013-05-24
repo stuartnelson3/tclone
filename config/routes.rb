@@ -5,7 +5,7 @@ Tclone::Application.routes.draw do
   delete "follower_connections/destroy"
   get "users/index"
   get "users/show"
-  devise_for :users, path: "/"
+  devise_for :users, path: "/", controllers: { registrations: "registrations" }
   get "/:username", to: "tweets#index", as: :user_tweets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
