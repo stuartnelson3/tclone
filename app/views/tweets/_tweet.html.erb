@@ -1,5 +1,5 @@
 <div class="row tweet">
-  <div class="user_name span6">
+  <div class="user_name span8">
     <%= image_tag(tweet.owner_image, alt: tweet.owner_name, class: "pull-left tweet-gravatar") %>
     <span class="pull-right"><%= time_ago_in_words(tweet.created_at) %></span>
     <%= link_to tweet.owner_name, user_tweets_path(tweet.owner_name) %>

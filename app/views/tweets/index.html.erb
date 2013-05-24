@@ -1,17 +1,28 @@
-<% if @user != current_user %>
-  <% if current_user.following?(@user) %>
-    <%= link_to "Unfollow", follower_connections_destroy_path(:user_id => @user), :method => :delete, class: "btn btn-danger" %>
+<div class="row">
+
+  <%= render "users/user_stats", user: @user %>
+
+<div class="span9">
+  <div class="row">
+    <div class="span6">
+      <h1><%= @user.user_name %>'s tweets</h1>
+    </div>
+    <div class="span3">
+      <% if @user != current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to "Unfollow", follower_connections_destroy_path(:user_id => @user), :method => :delete, class: "btn btn-danger pull-right" %>
+        <% else %>
+          <%= link_to "Follow", follower_connections_create_path(:user_id => @user), :method => :post, class: "btn btn-primary pull-right" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% if @tweets.present? %>
+    <% @tweets.each do |tweet| %>
+      <%= render "tweets/tweet", tweet: tweet %>
+    <% end %>
   <% else %>
-    <%= link_to "Follow", follower_connections_create_path(:user_id => @user), :method => :post, class: "btn btn-primary" %>
+    <p>No tweets!</p>
   <% end %>
-<% end %>
-
-<% if @tweets.present? %>
-<h1><%= @user.user_name %>'s tweets</h1>
-
-  <% @tweets.each do |tweet| %>
-    <%= render "tweets/tweet", tweet: tweet %>
-  <% end %>
-<% else %>
-  <p>No tweets!</p>
-<% end %>
+</div>
+</div>
