@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="navbar-text pull-right">
+<div class="container">
+  <p>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.
     <%= link_to "Home", root_path %> |
@@ -28,5 +29,6 @@
   <% end %>
 
   <%= yield %>
+</div>
 </body>
 </html>
