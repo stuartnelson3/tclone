@@ -1,5 +1,3 @@
-<% if @tweets.present? %>
-<h1><%= @user.user_name %>'s tweets</h1>
 <% if @user != current_user %>
   <% if current_user.following?(@user) %>
     <%= link_to "Unfollow", follower_connections_destroy_path(:user_id => @user), :method => :delete %>
@@ -7,6 +5,9 @@
     <%= link_to "Follow", follower_connections_create_path(:user_id => @user), :method => :post %>
   <% end %>
 <% end %>
+
+<% if @tweets.present? %>
+<h1><%= @user.user_name %>'s tweets</h1>
 
   <% @tweets.each do |tweet| %>
     <p>Tweet posted <%= time_ago_in_words(tweet.created_at) %> ago.</p>

@@ -1,27 +1,34 @@
-<h1>Home page</h1>
+<div class="row">
+  <div class="span2">
+    <div class="row">
+      <%= image_tag(current_user.gravatar_url, alt: current_user.user_name, class: "gravatar") %>
+      <p><%= current_user.user_name %></p>
+      <p>Tweets: <%= current_user.tweets_count %></p>
+      <p>Followers: <%= current_user.followers_count %></p>
+      <p>Following: <%= current_user.following_count %></p>
+    </div>
+    <div class="row">
+      <p>here are the other users on the site:</p>
+      <% @users.each do |user| %>
+        <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>
+        <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span10">
+    <p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path %></p>
 
-<p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path %></p>
+    <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
 
-<p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
-<div>
-  <p>Tweets: <%= current_user.tweets_count %></p>
-  <p>Followers: <%= current_user.followers_count %></p>
-  <p>Following: <%= current_user.following_count %></p>
+    <% if @following_tweets.present? %>
+      <% @following_tweets.each do |tweet| %>
+        <p><%= tweet.owner_name %></p>
+        <p><%= time_ago_in_words(tweet.created_at) %></p>
+        <p><%= tweet.text %></p>
+      <% end %>
+    <% else %>
+      <p>try following one of these people!</p>
+    <% end %>
+
+  </div>
 </div>
-
-<% if @following_tweets.present? %>
-  <% @following_tweets.each do |tweet| %>
-    <p><%= tweet.owner_name %></p>
-    <p><%= time_ago_in_words(tweet.created_at) %></p>
-    <p><%= tweet.text %></p>
-  <% end %>
-<% else %>
-  <p>try following one of these people!</p>
-<% end %>
-
-<p>here are the other users on the site:</p>
-<% @users.each do |user| %>
-  <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>
-  <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
-<% end %>
-
