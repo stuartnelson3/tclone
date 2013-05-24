@@ -4,5 +4,8 @@
     <span class="pull-right"><%= time_ago_in_words(tweet.created_at) %></span>
     <%= tweet.owner_name %>
     <div><%= tweet.text %></div>
+    <% if @user == current_user && current_page?(user_tweets_path) %>
+      <%= link_to "delete tweet", tweet, :method => :delete, class: "btn btn-danger pull-right" %>
+    <% end %>
   </div>
 </div>
