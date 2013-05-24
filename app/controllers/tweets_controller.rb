@@ -13,10 +13,10 @@ class TweetsController < ApplicationController
   def create
     respond_to do |format|
       if current_user.publish_tweet(params[:tweet])
-        flash[:success] = "Tweet successfully posted"
+        flash[:tweet_success] = "Tweet successfully posted"
         format.js
       else
-        flash[:failure] = "Tweet failed to post"
+        flash[:tweet_failure] = "Tweet failed to post"
         format.js
       end
     end

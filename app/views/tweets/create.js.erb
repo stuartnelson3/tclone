@@ -1,2 +1,2 @@
 $("#tweetModal").modal("toggle")
-<%# $(".container").prepend("<p class='<%= flash[:success] ? "success" : "failure" %1>'><%= flash[:success] or flash[:failure] %1></p>") %>
+$(".container").prepend("<p class='<%= flash[:tweet_success] ? "success" : "failure" %>'><%= flash[:tweet_success] or flash[:tweet_failure] %></p>")
