@@ -23,6 +23,7 @@
           <li><%= link_to "Your Tweets", user_tweets_path(current_user.user_name) %></li>
           <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+          <%= link_to "post a tweet", "#tweetModal", role: "button", data: {toggle: "modal"}, class: "btn btn-primary" %>
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
           <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
@@ -41,6 +42,11 @@
   <% end %>
 
   <%= yield %>
+</div>
+
+<!-- Modal -->
+<div id="tweetModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render "tweets/new" %>
 </div>
 </body>
 </html>

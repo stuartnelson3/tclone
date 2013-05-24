@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   def following_tweets
     ids = following.map(&:id) << id
-    Tweet.where(user_id: ids).order("created_at DESC")
+    Tweet.descending_order ids
   end
 
   def following?(user)

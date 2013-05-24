@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @user = User.find_by_user_name(params[:username]) || not_found
-    @tweets = @user.tweets
+    @tweets = Tweet.descending_order @user.id
   end
 
   def new

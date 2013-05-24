@@ -16,7 +16,6 @@
     </div>
   </div>
   <div class="span10">
-    <p>hey schlub, why don't you <%= link_to "post a tweet", "#tweetModal", role: "button", data: {toggle: "modal"}, class: "btn btn-primary" %></p>
 
     <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
 
@@ -27,11 +26,5 @@
     <% else %>
       <p>try following one of these people!</p>
     <% end %>
-
   </div>
-</div>
-
-<!-- Modal -->
-<div id="tweetModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <%= render "tweets/new" %>
 </div>
