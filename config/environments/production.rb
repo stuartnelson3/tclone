@@ -1,4 +1,12 @@
 Tclone::Application.configure do
+  # config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address => "127.0.0.1",
+  #   :port    => 25,
+  #   :domain  => 'yourdomain.com'
+  # }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

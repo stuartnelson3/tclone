@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :tweets
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable
 
   attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me
   validates :user_name, uniqueness: true
