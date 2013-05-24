@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="span10">
-    <p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path %></p>
+    <p>hey schlub, why don't you <%= link_to "post a tweet", new_tweet_path, class: "btn btn-primary" %></p>
 
     <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
 
