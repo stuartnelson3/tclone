@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   before_create :set_gravatar_url
 
   def following_tweets
-    following_ids = following.map(&:id)
-    Tweet.where(user_id: following_ids).order("created_at DESC")
+    ids = following.map(&:id) << id
+    Tweet.where(user_id: ids).order("created_at DESC")
   end
 
   def following?(user)

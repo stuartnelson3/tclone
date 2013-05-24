@@ -11,12 +11,15 @@ class TweetsController < ApplicationController
   end
 
   def create
-    if current_user.publish_tweet(params[:tweet])
-      flash[:success] = "Tweet successfully posted"
-    else
-      flash[:failure] = "Tweet failed to post"
+    respond_to do |format|
+      if current_user.publish_tweet(params[:tweet])
+        flash[:success] = "Tweet successfully posted"
+        format.js
+      else
+        flash[:failure] = "Tweet failed to post"
+        format.js
+      end
     end
-    redirect_to root_path
   end
 
   def show
