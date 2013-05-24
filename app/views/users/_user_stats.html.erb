@@ -3,9 +3,9 @@
     <%= image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar") %>
     <p><%= user.user_name %></p>
   <ul class="unstyled">
-    <li>Tweets: <%= user.tweets_count %></li>
-    <li>Followers: <%= user.followers_count %></li>
-    <li>Following: <%= user.following_count %></li>
+    <li><%= link_to "Tweets: #{user.tweets_count}", user_tweets_path(user.user_name) %></li>
+    <li><%= link_to "Followers: #{user.followers_count}", followers_path(user.user_name) %></li>
+    <li><%= link_to "Following: #{user.following_count}", following_path(user.user_name) %></li>
   </ul>
   <% if @users %>
     <p>here are the other users on the site:</p>

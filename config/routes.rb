@@ -7,6 +7,9 @@ Tclone::Application.routes.draw do
   get "users/show"
   devise_for :users, path: "/", controllers: { registrations: "registrations" }
   get "/:username", to: "tweets#index", as: :user_tweets
+  get "/:username/following", to: "follower_connections#following", as: :following
+  get "/:username/followers", to: "follower_connections#followers", as: :followers
+  # get "/:username/followers", as: :followers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
