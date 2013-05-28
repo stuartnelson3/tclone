@@ -14,11 +14,11 @@ end
 group :development do
   gem 'sqlite3'
   gem 'mailcatcher'
-  gem 'therubyracer'
 end
 
 gem 'twitter-bootstrap-rails', '2.1.7'
-gem 'less-rails'
+gem "therubyracer"
+gem "less-rails"
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
