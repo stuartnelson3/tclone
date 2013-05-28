@@ -17,6 +17,6 @@ class Tweet < ActiveRecord::Base
   end
 
   def parse_for_mentions
-    self.text = TweetParser.new(text).parse
+    self.text = TweetParser.new(self).parse
   end
 end

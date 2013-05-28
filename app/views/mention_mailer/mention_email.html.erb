@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You were mentioned in a tweet!</h1>
+    <div class="row tweet">
+      <div class="user_name span8">
+        <%= link_to (image_tag(@tweet.owner_image, alt: @tweet.owner_name, class: "pull-left tweet-gravatar")), user_tweets_url(@tweet.owner_name) %>
+        <%= link_to @tweet.owner_name, user_tweets_url(@tweet.owner_name) %>
+        <div><%= @tweet.text.html_safe %></div>
+      </div>
+    </div>
+  </body>
+</html>
