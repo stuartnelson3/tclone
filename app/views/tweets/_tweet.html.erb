@@ -3,7 +3,7 @@
     <%= link_to (image_tag(tweet.owner_image, alt: tweet.owner_name, class: "pull-left tweet-gravatar")), user_tweets_path(tweet.owner_name) %>
     <span class="pull-right"><%= time_ago_in_words(tweet.created_at) %></span>
     <%= link_to tweet.owner_name, user_tweets_path(tweet.owner_name) %>
-    <div><%= tweet.text %></div>
+    <div><%= tweet.text.html_safe %></div>
     <% if user_signed_in? %>
       <% if current_user.favorited? tweet %>
         <button type="button" class="btn btn-danger unfavorite" data-id="<%= tweet.id %>">Unfavorite</button>

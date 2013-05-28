@@ -16,6 +16,6 @@ class TweetParser
   end
 
   def parse_user_names
-    text.scan(/@{1}[a-zA-Z_]+/i).flatten
+    text.scan(/@{1}[a-zA-Z1-9_]+/i).flatten
   end
 end
