@@ -16,8 +16,7 @@ class TweetParser
   end
 
   def make_link(user_name)
-    base_url = Rails.env.production? ? "heroku.url.here" : "localhost:3000"
-    "<a href='#{base_url}/#{user_name[1..-1]}' class='mention-link'>#{user_name}</a>"
+    "<a href='/#{user_name[1..-1]}' class='mention-link'>#{user_name}</a>"
   end
 
   def parse_user_names
