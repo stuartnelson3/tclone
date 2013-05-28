@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
          :confirmable
 
   attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :info
   validates :user_name, uniqueness: true
   validates :user_name, presence: true
   validates :user_name, length: { in: 3..20 }
+  validates :info, length: { maximum: 140 }
 
   before_create :set_gravatar_url
 
