@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 
   has_many :tweets
 
+  has_many :favorite_tweets
+  has_many :favorites, through: :favorite_tweets, source: :tweet
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
@@ -37,6 +40,19 @@ class User < ActiveRecord::Base
 
   def unfollow(user_id)
     following_connections.where(follower_id: id, user_id: user_id).first.destroy
+  end
+
+  def favorited?(tweet)
+    favorites.include? tweet
+  end
+
+  def favorite_tweet(tweet_id)
+    tweet = Tweet.find_by_id(tweet_id)
+    favorites << tweet
+  end
+
+  def unfavorite(tweet_id)
+    favorite_tweets.where(tweet_id: tweet_id, user_id: id).first.destroy
   end
 
   def publish_tweet(params)

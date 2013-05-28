@@ -4,6 +4,13 @@
     <span class="pull-right"><%= time_ago_in_words(tweet.created_at) %></span>
     <%= link_to tweet.owner_name, user_tweets_path(tweet.owner_name) %>
     <div><%= tweet.text %></div>
+    <% if user_signed_in? %>
+      <% if current_user.favorited? tweet %>
+        <button type="button" class="btn btn-danger unfavorite" data-id="<%= tweet.id %>">Unfavorite</button>
+      <% else %>
+        <button type="button" class="btn btn-primary favorite" data-id="<%= tweet.id %>">Favorite</button>
+      <% end %>
+    <% end %>
     <% if @user == current_user && current_page?(user_tweets_path) %>
       <%= link_to "delete tweet", tweet, :method => :delete, class: "btn btn-danger pull-right" %>
     <% end %>

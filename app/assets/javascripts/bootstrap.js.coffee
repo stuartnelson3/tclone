@@ -11,3 +11,23 @@ jQuery ->
     else
       $char_count.removeClass("red")
     $char_count.text(characters_remaining)
+
+$(document).on "click", ".favorite", (e) ->
+  params = {
+    type: 'POST'
+    url: '/favorite'
+    data: {tweet_id: $(@).data("id")}
+    success: =>
+      $(@).removeClass("favorite btn-primary").addClass("unfavorite btn-danger").text("Unfavorite")
+  }
+  $.ajax(params)
+
+$(document).on "click", ".unfavorite", (e) ->
+  params = {
+    type: 'DELETE'
+    url: '/unfavorite'
+    data: {tweet_id: $(@).data("id")}
+    success: =>
+      $(@).addClass("favorite btn-primary").removeClass("unfavorite btn-danger").text("Favorite")
+  }
+  $.ajax(params)
