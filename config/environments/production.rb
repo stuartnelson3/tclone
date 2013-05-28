@@ -8,6 +8,7 @@ Tclone::Application.configure do
     :authentication => :plain,
   }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'pure-eyrie-6351.herokuapp.com' }
   # config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
   # config.action_mailer.smtp_settings = {
   #   :address => "127.0.0.1",
