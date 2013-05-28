@@ -21,10 +21,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   def destroy
     current_user.tweets.find(params[:id]).destroy
     flash[:notice] = "Tweet deleted"
