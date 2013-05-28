@@ -2,14 +2,13 @@
   <%= render "users/user_stats", user: current_user %>
 
   <div class="span9">
-    <p>check out your <%= link_to "tweets", user_tweets_path(current_user.user_name) %></p>
 
     <% if @following_tweets.present? %>
       <% @following_tweets.each do |tweet| %>
         <%= render "tweets/tweet", tweet: tweet %>
       <% end %>
     <% else %>
-      <p>try following one of these people!</p>
+      <p>you're not following anyone!</p>
     <% end %>
 
   </div>
