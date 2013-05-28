@@ -1,6 +1,6 @@
 <div class="span3">
   <div class="row">
-    <%= link_to (image_tag(user.gravatar_url, alt: user.user_name, class: "gravatar")), user_tweets_path(user.user_name) %>
+    <%= link_to (image_tag(user.gravatar_url, alt: user.user_name, class: "tweet-gravatar")), user_tweets_path(user.user_name) %>
     <p><%= user.user_name %></p>
   <ul class="unstyled">
     <li><%= link_to "Tweets: #{user.tweets_count}", user_tweets_path(user.user_name) %></li>
