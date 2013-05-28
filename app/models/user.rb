@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   # Returns an integer
   [:tweets, :followers, :following].each do |meth|
     define_method "#{meth}_count" do
-      send(meth).count
+      public_send(meth).count
     end
   end
 
