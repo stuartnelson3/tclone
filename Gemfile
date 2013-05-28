@@ -16,10 +16,9 @@ group :development do
   gem 'mailcatcher'
 end
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '2.1.7'
 gem "therubyracer"
 gem "less-rails"
-# gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
