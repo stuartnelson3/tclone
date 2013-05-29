@@ -13,7 +13,7 @@ class TweetParser
 
   def send_mention_emails
     parsed_user_names.each do |user_name|
-      MentionMailer.mention_email(tweet, user_name[1..-1]).deliver
+      MentionMailer.mention_email(tweet, user_name[1..-1])
     end
   end
 

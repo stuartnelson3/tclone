@@ -4,4 +4,9 @@ FactoryGirl.define do
     email 'test_user@example.com'
     password 'example_password'
   end
+
+  factory :tweet do
+    user_id '1'
+    text 'here is an example tweet'
+  end
 end
