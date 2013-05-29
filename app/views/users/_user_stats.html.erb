@@ -7,7 +7,7 @@
     <li><%= link_to "Followers: #{user.followers_count}", followers_path(user.user_name) %></li>
     <li><%= link_to "Following: #{user.following_count}", following_path(user.user_name) %></li>
   </ul>
-  <% if @users.length > 0 %>
+  <% if @users && @users.length > 0 %>
     <p>here are the other users on the site:</p>
     <% @users.each do |user| %>
       <p><%= link_to "#{user.user_name}", user_tweets_path(user.user_name) %></p>

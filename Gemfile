@@ -3,7 +3,6 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0.rc1'
 gem 'devise'
-gem 'rspec-rails'
 gem 'puma'
 gem 'protected_attributes'
 gem 'jquery-rails'
@@ -16,6 +15,11 @@ end
 group :development do
   gem 'sqlite3'
   gem 'mailcatcher'
+end
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'master'
