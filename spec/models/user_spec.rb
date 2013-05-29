@@ -16,6 +16,16 @@ describe User do
       user.info = "a" * 141
       expect(user.valid?).to eq(false)
     end
+    it "shouldn't allow non-unique user_names" do
+      user.save
+      dup_user = User.new(user_name: "sample_user", email: "different_email@example.com", password: "password")
+      expect(dup_user.valid?).to eq(false)
+    end
+    it "shouldn't allow non-unique emails" do
+      user.save
+      dup_user = User.new(user_name: "other_user", email: "example@example.com", password: "password")
+      expect(dup_user.valid?).to eq(false)
+    end
   end
 
   context "metaprogramming methods" do
