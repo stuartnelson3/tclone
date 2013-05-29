@@ -1,4 +1,4 @@
-<% if current_user != user %>
+<% if user_signed_in? && current_user != user %>
   <% if current_user.following?(user) %>
     <button type="button" data-id="<%= user.id %>" class="btn btn-danger pull-right unfollow" >Unfollow</button>
   <% else %>
